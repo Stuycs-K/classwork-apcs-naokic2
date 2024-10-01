@@ -5,7 +5,7 @@ public class MyArrays{
     System.out.println(arrayToString(x));
     Boolean y = (returnCopy(x) == x);
     System.out.println("should be false:" + y);
-    System.out.println(concatArray(x, z));
+    System.out.println(arrayToString(concatArray(x, z)));
   }
 
   public static String arrayToString(int[] arr) {
@@ -30,14 +30,14 @@ public class MyArrays{
     }
 
     public static int[] concatArray(int[]ary1,int[]ary2) {
-      int[] output = new int[ary1.length + ary2.length - 2];
+      int[] output = new int[ary1.length + ary2.length];
       int index = 0;
       for(int i=0;i< ary1.length;i++) {
         output[index] = ary1[i];
         index += 1;
       }
-      for(int i=index;i<ary1.length + index; i++) {
-        output[index] = ary2[i];
+      for(int x=0;x<ary2.length; x++) {
+        output[index] = ary2[x];
         index += 1;
       }
       return output;
