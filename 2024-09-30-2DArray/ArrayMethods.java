@@ -61,6 +61,19 @@ public static int[][] swapRC (int[][] nums){
   return output;
 }
 
+public static void replaceNegative(int[][] vals) {
+  for(int i =0;i<vals.length;i++) {
+    for(int x=0;x<vals[i].length;x++) {
+      if(vals[i][x] < 0) {
+        if(x == i) {
+          vals[i][x] = 1;
+        }
+        vals[i][x] = 0;
+      }
+    }
+  }
+}
+
 
 
 }
