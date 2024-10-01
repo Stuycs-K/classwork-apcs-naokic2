@@ -9,6 +9,7 @@ public static void main(String[]args) {
   int[][] testcase = {{2,3,4}, {4,3,2}, {33,23,42}};
   System.out.println(arrToString(testcase));
   System.out.println(arr2DSum(testcase));
+  System.out.println(arrToString(swapRC(testcase)));
 
 }
 
@@ -48,4 +49,18 @@ public static int arr2DSum(int [][]nums) {
   }
   return sum;
 }
+
+
+public static int[][] swapRC (int[][] nums){
+  int[][] output = new int [nums[0].length][nums.length];
+  for(int i=0;i<nums[0].length;i++) {
+    for(int x=0;x<nums.length;x++) {
+      output[i][x] = nums[x][i];
+    }
+  }
+  return output;
+}
+
+
+
 }
