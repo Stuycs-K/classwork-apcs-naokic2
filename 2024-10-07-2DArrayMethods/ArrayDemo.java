@@ -1,6 +1,11 @@
 import java.util.Arrays;
 public class ArrayDemo{
   public static void main(String[]args){
+    int[] x = {1,4,6,8};
+    int[][] testcase = {{2,3,4}, {4,3,2}, {33,23,42}};
+    int[][] testcase2 = {{2,3,4}, {4,3}, {33,23,42}};
+    System.out.println(arrayToString(x));
+    System.out.println(arrToString(testcase));
     //write your tests here!
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
@@ -9,15 +14,27 @@ public class ArrayDemo{
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
-  public static String arrToString(int[]ary){
-    return "";
+  public static String arrayToString(int[] arr) {       // turns 1d arr to string
+    String x = "[";
+    for(int i=0;i<arr.length-1;i++) {
+      x += arr[i];
+      x+= ", ";
+    }
+    x = x + arr[arr.length - 1] + "]";
+    return x;
   }
 
   //The name of different methods can be the same,
   //as long as the parameters are different! (type and/or quantity must be different)
   //Pro tip: you should be using your 1D arrToString in this method!
-  public static String arrToString(int[][]ary){
-    return "";
+  public static String arrToString(int[][] arr) {        // turns 2d arr to string
+      String finale = "[";
+    for(int i = 0; i < arr.length - 1; i++)
+    {
+      finale += arrayToString(arr[i]) + ", ";
+    }
+    finale += arrayToString(arr[arr.length-1]) + "]";
+    return finale;
   }
 
   //1. Calculate and return how many elements equal zero in the 2D array.
