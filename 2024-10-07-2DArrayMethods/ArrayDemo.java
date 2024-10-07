@@ -4,8 +4,11 @@ public class ArrayDemo{
     int[] x = {1,4,6,8};
     int[][] testcase = {{2,3,4}, {4,3,2}, {33,23,42}};
     int[][] testcase2 = {{2,3,4}, {4,3}, {33,23,42}};
-    System.out.println(arrayToString(x));
-    System.out.println(arrToString(testcase));
+    System.out.println(arrayToString(x) + " -arrtostring1d test");
+    System.out.println(arrToString(testcase) + " -arrtostring2d test1");
+    System.out.println(arrToString(testcase2) + " -arrtostring2d test2");
+    System.out.println(arr2DSum(testcase) + " -arr2dsum test1");
+    System.out.println(arr2DSum(testcase2) + " -arr2dsum test2");
     //write your tests here!
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
@@ -45,9 +48,15 @@ public class ArrayDemo{
   //2. Calculate the sum of a 2d array
   /*Return the sum of all of the values in the 2D array
    *Use a nested loop instead of a helper method*/
-  public static int arr2DSum(int[][]nums){
-    return 0;
-  }
+   public static int arr2DSum(int [][]nums) {             // returns sum of all values in 2d arr
+     int sum =0;
+     for(int i=0; i <nums.length;i++) {
+       for(int x=0; x <nums[i].length;x++) {
+         sum += nums[i][x];
+       }
+     }
+     return sum;
+   }
 
   //3. Modify a given 2D array of integer as follows:
   //Replace all the negative values:
