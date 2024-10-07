@@ -1,6 +1,6 @@
 public class ArrayMethods {
 
-public static void main(String[]args) {
+public static void main(String[]args) {        //testing functions
 
   int[] x = {1,4,6,8};
   int[] z = {2,3,6,9};
@@ -10,12 +10,13 @@ public static void main(String[]args) {
   System.out.println(arrToString(testcase));
   System.out.println(arr2DSum(testcase));
   System.out.println(arrToString(swapRC(testcase)));
+  
 
 }
 
 
 
-public static String arrayToString(int[] arr) {
+public static String arrayToString(int[] arr) {       // turns 1d arr to string
   String x = "[";
   for(int i=0;i<arr.length-1;i++) {
     x += arr[i];
@@ -25,7 +26,7 @@ public static String arrayToString(int[] arr) {
   return x;
 }
 
-public static String arrToString(int[][] arr)
+public static String arrToString(int[][] arr)         // turns 2d arr to string
 {
     String finale = "[";
   for(int i = 0; i < arr.length - 1; i++)
@@ -40,7 +41,7 @@ public static String arrToString(int[][] arr)
 
 }
 
-public static int arr2DSum(int [][]nums) {
+public static int arr2DSum(int [][]nums) {             // returns sum of all values in 2d arr
   int sum =0;
   for(int i=0; i <nums.length;i++) {
     for(int x=0; x <nums[i].length;x++) {
@@ -51,7 +52,7 @@ public static int arr2DSum(int [][]nums) {
 }
 
 
-public static int[][] swapRC (int[][] nums){
+public static int[][] swapRC (int[][] nums){           // exchanges rows/columns of array. (references and size)
   int[][] output = new int [nums[0].length][nums.length];
   for(int i=0;i<nums[0].length;i++) {
     for(int x=0;x<nums.length;x++) {
@@ -61,7 +62,7 @@ public static int[][] swapRC (int[][] nums){
   return output;
 }
 
-public static void replaceNegative(int[][] vals) {
+public static void replaceNegative(int[][] vals) {     //replaces all neg #'s with 0 unless row & column are the same, then replaces with 1
   for(int i =0;i<vals.length;i++) {
     for(int x=0;x<vals[i].length;x++) {
       if(vals[i][x] < 0) {
@@ -73,7 +74,16 @@ public static void replaceNegative(int[][] vals) {
     }
   }
 }
-
+public static int[][] copy (int[][] nums) {         //copies array to new array. (new reference)
+  ref_len = nums.length;
+  int[][] copy = new int[ref_len][];
+  for(int i=0;i< ref_len;i++) {
+    for(int x=0;x< int[i].length;x++) {
+      copy[i][x] = nums[i][x];
+    }
+  }
+  return copy;
+}
 
 
 }
