@@ -88,4 +88,13 @@ public static int[] rowCopy (int[] row) {
   return copy;
 }
 
+public static int[][] copy (int[][] nums) {         //copies array to new array. (new reference)
+  int ref_len = nums.length;
+  int[][] copy = new int[ref_len][];
+  for(int i=0;i< ref_len;i++) {
+    copy[i] = rowCopy(nums[i]);
+  }
+  return copy;
+}
 
+}
