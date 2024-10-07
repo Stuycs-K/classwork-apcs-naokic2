@@ -7,9 +7,11 @@ public static void main(String[]args) {        //testing functions
   System.out.println(arrayToString(x));
   System.out.println(arrayToString(z));
   int[][] testcase = {{2,3,4}, {4,3,2}, {33,23,42}};
+  int[][] testcase2 = {{2,3,4}, {4,3}, {33,23,42}};
   System.out.println(arrToString(testcase));
   System.out.println(arr2DSum(testcase));
   System.out.println(arrToString(swapRC(testcase)));
+  System.out.println(arrToString(copy (testcase2)));
   
 
 }
@@ -74,16 +76,16 @@ public static void replaceNegative(int[][] vals) {     //replaces all neg #'s wi
     }
   }
 }
-public static int[][] copy (int[][] nums) {         //copies array to new array. (new reference)
-  ref_len = nums.length;
-  int[][] copy = new int[ref_len][];
-  for(int i=0;i< ref_len;i++) {
-    for(int x=0;x< int[i].length;x++) {
-      copy[i][x] = nums[i][x];
-    }
+
+
+
+
+public static int[] rowCopy (int[] row) {
+  int[] copy = new int [row.length];
+  for(int i=0;i<row.length; i++) {
+    copy[i] = row[i];
   }
   return copy;
 }
 
 
-}
