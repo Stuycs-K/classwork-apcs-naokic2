@@ -9,6 +9,8 @@ public class ArrayDemo{
     System.out.println(arrToString(testcase2) + " -arrtostring2d test2");
     System.out.println(arr2DSum(testcase) + " -arr2dsum test1");
     System.out.println(arr2DSum(testcase2) + " -arr2dsum test2");
+    System.out.println(swapRC(testcase) + " -swapRc test1");
+    System.out.println(swapRC(testcase2) + " -swapRc test2");
     //write your tests here!
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
@@ -79,8 +81,14 @@ public class ArrayDemo{
   //5. Rotate an array by returning a new array with the rows and columns swapped.
   //   You may assume the array is rectangular and neither rows nor cols is 0.
   //   e.g. swapRC({{1,2,3},{4,5,6}}) returns {{1,4},{2,5},{3,6}}
-  public static int[][] swapRC(int[][]nums){
-    return new int[1][1];
+  public static int[][] swapRC (int[][] nums){           // exchanges rows/columns of array. (references and size)
+    int[][] output = new int [nums[0].length][nums.length];
+    for(int i=0;i<nums[0].length;i++) {
+      for(int x=0;x<nums.length;x++) {
+        output[i][x] = nums[x][i];
+      }
+    }
+    return output;
   }
 
   //6. Make an HTML table by putting a table tag around the entire 2d array,
