@@ -13,6 +13,9 @@ public class ArrayDemo{
     System.out.println(swapRC(testcase2) + " -swapRc test2");
     System.out.println(arrToString(copy(testcase)) + " -copy test1");
     System.out.println(arrToString(copy(testcase2)) + " -copy test2");
+    int[][] input = {{-1, 2, -3},{4, -5, 6},{7, -8, -9}};
+    input = replaceNegative(input);
+    System.out.println(input);
     //write your tests here!
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
@@ -67,9 +70,19 @@ public class ArrayDemo{
   //-When the row number is the same as the column number replace
   //that negative with the value 1
   //-All other negatives replace with 0
-  public static void replaceNegative(int[][] vals){
-
+  public static void replaceNegative(int[][] vals) {    
+  for(int i =0;i<vals.length;i++) {
+    for(int x=0;x<vals[i].length;x++) {
+      if(vals[i][x] < 0) {
+        if(x == i) {
+          vals[i][x] = 1;
+        }
+        vals[i][x] = 0;
+      }
+    }
   }
+}
+
 
   //4. Make a copy of the given 2d array.
   //When testing : make sure that changing the original does NOT change the copy.
