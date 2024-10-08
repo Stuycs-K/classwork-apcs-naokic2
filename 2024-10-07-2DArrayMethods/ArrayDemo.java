@@ -11,6 +11,8 @@ public class ArrayDemo{
     System.out.println(arr2DSum(testcase2) + " -arr2dsum test2");
     System.out.println(swapRC(testcase) + " -swapRc test1");
     System.out.println(swapRC(testcase2) + " -swapRc test2");
+    System.out.println(arrToString(copy(testcase)) + " -copy test1");
+    System.out.println(arrToString(copy(testcase2)) + " -copy test2");
     //write your tests here!
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
@@ -74,9 +76,24 @@ public class ArrayDemo{
   //DO NOT use any built in methods that "copy" an array.
   //You SHOULD write a helper method for this.
   //If you don't see a good way to do that, you should stop and look at prior methods.
-  public static int[][] copy(int[][] nums){
-    return new int[1][1];
+  public static int[] rowCopy (int[] row) {
+    int[] copy = new int [row.length];
+    for(int i=0;i<row.length; i++) {
+      copy[i] = row[i];
+    }
+    return copy;
   }
+  
+  public static int[][] copy (int[][] nums) {        
+    int ref_len = nums.length;
+    int[][] copy = new int[ref_len][];
+    for(int i=0;i< ref_len;i++) {
+      copy[i] = rowCopy(nums[i]);
+    }
+    return copy;
+  }
+  
+  
 
   //5. Rotate an array by returning a new array with the rows and columns swapped.
   //   You may assume the array is rectangular and neither rows nor cols is 0.
