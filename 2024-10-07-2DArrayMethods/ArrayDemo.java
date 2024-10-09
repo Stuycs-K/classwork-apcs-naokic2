@@ -16,8 +16,9 @@ public class ArrayDemo{
     System.out.println(htmlTable(testcase) + "html test1");
     int[][] input = {{-1, 2, -3},{4, -5, 6},{7, -8, -9}};
     replaceNegative(input);
-    System.out.println(arrToString(input));
-    int[][] input = {{-1, 0, -3},{0, -5, 7},{7, -8, -9, 0}};
+    System.out.println(arrToString(input) + " replace negative test");
+    int[][] zeroarr = {{-1, 0, -3},{0, -5, 7},{7, -8, -9, 0}};
+    System.out.println(countZeros2D(zeroarr) + " countzeros test");
     //write your tests here!
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
