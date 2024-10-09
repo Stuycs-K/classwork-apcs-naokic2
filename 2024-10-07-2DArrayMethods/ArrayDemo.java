@@ -15,8 +15,9 @@ public class ArrayDemo{
     System.out.println(arrToString(copy(testcase2)) + " -copy test2");
     System.out.println(htmlTable(testcase) + "html test1");
     int[][] input = {{-1, 2, -3},{4, -5, 6},{7, -8, -9}};
-    replaceNegative(testcase);
-    System.out.println(arrToString(testcase));
+    replaceNegative(input);
+    System.out.println(arrToString(input));
+    int[][] input = {{-1, 0, -3},{0, -5, 7},{7, -8, -9, 0}};
     //write your tests here!
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
@@ -49,8 +50,16 @@ public class ArrayDemo{
   }
 
   //1. Calculate and return how many elements equal zero in the 2D array.
-  public static int countZeros2D(int[][] nums){
-    return 0;
+  public static int countZeros2D(int[][] nums) {
+    int count = 0;
+    for (int i = 0; i < nums.length; i++) {
+      for (int j = 0; j < nums[i].length; j++) {
+        if (nums[i][j] == 0) {
+          count++;
+        }
+      }
+    }
+    return count;
   }
 
   //2. Calculate the sum of a 2d array
