@@ -9,13 +9,14 @@ public class ArrayDemo{
     System.out.println(arrToString(testcase2) + " -arrtostring2d test2");
     System.out.println(arr2DSum(testcase) + " -arr2dsum test1");
     System.out.println(arr2DSum(testcase2) + " -arr2dsum test2");
-    System.out.println(swapRC(testcase) + " -swapRc test1");
-    System.out.println(swapRC(testcase2) + " -swapRc test2");
+    System.out.println(arrToString(swapRC(testcase)) + " -swapRc test1");
+
     System.out.println(arrToString(copy(testcase)) + " -copy test1");
     System.out.println(arrToString(copy(testcase2)) + " -copy test2");
+    System.out.println(htmlTable(testcase) + "html test1");
     int[][] input = {{-1, 2, -3},{4, -5, 6},{7, -8, -9}};
-    input = replaceNegative(input);
-    System.out.println(input);
+    replaceNegative(testcase);
+    System.out.println(arrToString(testcase));
     //write your tests here!
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
@@ -76,8 +77,9 @@ public class ArrayDemo{
       if(vals[i][x] < 0) {
         if(x == i) {
           vals[i][x] = 1;
-        }
+        } else {
         vals[i][x] = 0;
+        }
       }
     }
   }
@@ -128,6 +130,16 @@ public class ArrayDemo{
   //   e.g. htmlTable(new int[][]{{1,2},{3}})  returns:
   // "<table><tr><td>1</td><td>2</td></tr><tr><td>3</td></tr></table>"
   public static String htmlTable(int[][]nums){
-    return "";
+    String html = "<table>";
+    for (int i = 0; i < nums.length; i++) {
+      html += "<tr>";
+      for (int j = 0; j < nums[i].length; j++) {
+      html += "<td>" + nums[i][j] + "</td>";
+      }
+      html += "</tr>";
+      }
+      html += "</table>";
+    return html;
+    }
+
   }
-}
