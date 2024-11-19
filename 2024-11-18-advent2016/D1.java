@@ -1,36 +1,27 @@
 import java.util.ArrayList;
 public class D1 {
-  int N;
-  int S;
-  int W;
-  int E;
-
-  public static String direction_out(String direction,String step) {
-    ArrayList<String> dir = new ArrayList<String>(4);
-    dir.add("N");
-    dir.add("E");
-    dir.add("S");
-    dir.add("W");
-
-      if (step.equals("R")) {
-        if (dir.indexOf(direction) < 3) {
-          return dir.get(dir.indexOf(direction) + 1);
-        }
-        else {
-            return dir.get(0);
-          }
-
-      }
-      else {
-        if (dir.indexOf(direction) > 0) {
-          return dir.get(dir.indexOf(direction) - 1);
-        }
-        else {
-          return dir.get(3);
-        }
-      }
 
 
+
+  public static void solve(ArrayList<String> list) {
+    String [][] dlist= new String[list.size()][2];
+    for(int i=0;i<list.size();i++){
+      dlist[i][0] = (list.get(i)).substring(0,1);
+      dlist[i][1] = list.get(i).substring(1);
+    }
+    int dir = 0;
+    int[] move = {0,0};
+    System.out.println(dlist);
+
+}
+
+public static void toString(String[][] d) {
+  for(int i=0;i<d.length;i++) {
+    System.out.println(d[i][0] + "--" + d[i][1]);
   }
-
+}
+public static void main(String[] args) {
+  ArrayList<String> list = filereader.reader();
+  solve(list);
+}
 }
