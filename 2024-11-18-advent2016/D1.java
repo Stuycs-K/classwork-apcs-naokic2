@@ -13,18 +13,17 @@ public class D1 {
     dir.add("W");
 
       if (step.equals("R")) {
-        if (dir.indexOf(step) < 3) {
-          return dir.get(dir.indexOf(step) + 1);
+        if (dir.indexOf(direction) < 3) {
+          return dir.get(dir.indexOf(direction) + 1);
         }
         else {
             return dir.get(0);
           }
 
       }
-    }
       else {
-        if (dir.indexOf(step) > 0) {
-          return dir.get(dir.indexOf(step) - 1);
+        if (dir.indexOf(direction) > 0) {
+          return dir.get(dir.indexOf(direction) - 1);
         }
         else {
           return dir.get(3);
@@ -33,8 +32,5 @@ public class D1 {
 
 
   }
-
-
-
 
 }
