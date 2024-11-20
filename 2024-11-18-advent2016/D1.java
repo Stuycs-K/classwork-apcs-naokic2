@@ -3,15 +3,14 @@ public class D1 {
 
 
 
-  public static void solve(ArrayList<String> list) {
-    String [][] dlist= new String[list.size()][2];
+  public static ArrayList<String> solve(ArrayList<String> list) {
+    ArrayList<String> dlist = new ArrayList<String> (list.size());
     for(int i=0;i<list.size();i++){
-      dlist[i][0] = (list.get(i)).substring(0,1);
-      dlist[i][1] = list.get(i).substring(1);
+      dlist.set(i, (list.get(i).substring(0,1)));
     }
     int dir = 0;
     int[] move = {0,0};
-    System.out.println(dlist);
+    return dlist;
 
 }
 
@@ -22,6 +21,7 @@ public static void toString(String[][] d) {
 }
 public static void main(String[] args) {
   ArrayList<String> list = filereader.reader();
-  solve(list);
+  System.out.println(list.size());
+  System.out.println(solve(list));
 }
 }
