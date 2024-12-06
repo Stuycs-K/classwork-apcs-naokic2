@@ -112,3 +112,9 @@ for (int i = 0; i < 30; i++) {
 for (int j = 0; j < 80; j++) {
 if (i == 0 || i == 29 || j == 0 || j == 79)
 { System.out.print("#");
+}
+}
+}
+}
+}
+}
