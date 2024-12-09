@@ -1,5 +1,7 @@
 public class Wizard extends Adventurer{
   private int HogwartsPoints;
+
+
   public Wizard(String name, int hp) {
     super(name, hp);
   }
@@ -36,12 +38,15 @@ public class Wizard extends Adventurer{
 
   //heall or buff the target adventurer
   public abstract String support(Adventurer other){
-
+    other.restoreSpecial(5);
+    return "You have healed " + other "5 points!"
   }
 
   //heall or buff self
   public abstract String support(){
+      restoreSpecial(5);
 
+      return "You have: " + HogwartsPoints + " many hogwarts points."
   }
 
   //hurt or hinder the target adventurer, consume some special resource
