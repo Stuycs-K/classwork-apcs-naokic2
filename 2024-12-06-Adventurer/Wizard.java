@@ -27,36 +27,36 @@ public class Wizard extends Adventurer{
 
     HogwartsPoints = n;
   }
-  public int getSpecialMax()
+  public int getSpecialMax(){
     return 100;
   }
   //hurt or hinder the target adventurer
-  public abstract String attack(Adventurer other){
+  public String attack(Adventurer other){
     other.applyDamage(1);
-    return "Used attack! dealt 1 damage!"
+    return "Used attack! dealt 1 damage!";
   }
 
   //heall or buff the target adventurer
-  public abstract String support(Adventurer other){
+  public String support(Adventurer other){
     other.restoreSpecial(5);
-    return "You have healed " + other "5 points!"
+    return "You have healed " + other + "5 points!";
   }
 
   //heall or buff self
-  public abstract String support(){
+  public String support(){
       restoreSpecial(5);
 
-      return "You have: " + HogwartsPoints + " many hogwarts points."
+      return "You have: " + HogwartsPoints + " many hogwarts points.";
   }
 
   //hurt or hinder the target adventurer, consume some special resource
-  public abstract String specialAttack(Adventurer other){
+  public String specialAttack(Adventurer other){
     if(HogwartsPoints >= 10){
       other.applyDamage(3);
-      HogwartsPoints -= 10
-      return "Used special attack! dealt 3 damage, but consumed 10 Hogwarts Points! You have: " + HogwartsPoints + " many points left."
+      HogwartsPoints -= 10;
+      return "Used special attack! dealt 3 damage, but consumed 10 Hogwarts Points! You have: " + HogwartsPoints + " many points left.";
     } else {
-      return "Insufficient HogwartsPoints."
+      return "Insufficient HogwartsPoints.";
     }
   }
 

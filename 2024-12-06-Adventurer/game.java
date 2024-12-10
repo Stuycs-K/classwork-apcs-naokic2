@@ -12,10 +12,10 @@ public class game{
     //Do something with the input
     System.out.println("Username is: " + userName);
 
-    Adventurer player new Wizard(userName,10);
+    Adventurer player = new Wizard(userName,10);
     Adventurer foe = new CodeWarrior("Mr.K",10);
     while(player.getHP > 0 && foe.getHP > 0) {
-      String HP = player.getHP + "/" + player.getmaxHP + " HP"
+      String HP = player.getHP + "/" + player.getmaxHP + " HP";
       String Special = player.getSpecial + "/" + player.getSpecialMax + " HogwartsPoints";
       System.out.println(player.getName + ", " + HP + ", " + Special);
 
@@ -23,8 +23,20 @@ public class game{
 
       String action = userInput.nextLine();
 
-      player.action;
-    }
+      if (action.equals("a")) {
+        player.attack(foe);
+      }
+      if (action.equals("sp")) {
+        player.specialAttack(foe);
+      }
+      if (action.equals("su")) {
+        player.support();
+      }
+      if (action.equals("quit")) {
+        return;
+      }
+
   }
 
+}
 }
