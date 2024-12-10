@@ -14,10 +14,10 @@ public class game{
 
     Adventurer player = new Wizard(userName,10);
     Adventurer foe = new CodeWarrior("Mr.K",10);
-    while(player.getHP > 0 && foe.getHP > 0) {
-      String HP = player.getHP + "/" + player.getmaxHP + " HP";
-      String Special = player.getSpecial + "/" + player.getSpecialMax + " HogwartsPoints";
-      System.out.println(player.getName + ", " + HP + ", " + Special);
+    while(player.getHP() > 0 && foe.getHP() > 0) {
+      String HP = player.getHP() + "/" + player.getmaxHP() + " HP";
+      String Special = player.getSpecial() + "/" + player.getSpecialMax() + " HogwartsPoints";
+      System.out.println(player.getName() + ", " + HP + ", " + Special);
 
       System.out.println("Type: (a)ttack / (sp)ecial / (su)pport / quit");
 
