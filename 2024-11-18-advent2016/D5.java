@@ -1,7 +1,9 @@
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.FileReader;
+
 
 public class D5 {
 
@@ -44,5 +46,24 @@ public class D5 {
         }
 
         System.out.println(finals);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
