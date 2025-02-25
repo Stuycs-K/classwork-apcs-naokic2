@@ -11,16 +11,15 @@ public class Reader{
 
   public static int[][] getValues(String filename) throws FileNotFoundException{
     Scanner text = new Scanner( new File(filename));
+    ArrayList<String> lines = new ArrayList<String>;
     while(text.hasNextLine()){
       String line = text.nextLine();
-      ArrayList<String> line = new ArrayList<String>;
       if(line.length() != 0){
-        line.add()
-
-      }
-      ArrayList<ArrayList<String>> maze = new ArrayList<Arraylist<String>>;
       maze.add(line);
     }
+    }
+    int[][] maze = new int[lines][lines.size()];
+
 
 
   }
