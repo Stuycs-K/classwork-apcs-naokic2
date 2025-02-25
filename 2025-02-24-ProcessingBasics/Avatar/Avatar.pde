@@ -9,16 +9,20 @@ void avatar(int x, int y){
   ellipse(x-13,y+3,10,6);
   ellipse(x+10,y+3,10,6);
   
-  rect();
+  rect(x-11,y+20,20,7);
 
-  fill(0, 0, 255); 
+  fill(99, 81, 0);
   rect(x-50, y+60, 100, 130);
-  
+  fill(99, 81, 200);
+  rect(x-70, y+60, 20, 90);
+  rect(x+50, y+60, 20, 90);
+  rect(x+30, y+190, 20, 90);
+  rect(x-50, y+190, 20, 90);
 }
 
 //setup will draw two of your avatars.
 void setup(){
-         size(800,800);
+         size(1000,1000);
          background(255);
          avatar(200,200);
          avatar(600,600);
