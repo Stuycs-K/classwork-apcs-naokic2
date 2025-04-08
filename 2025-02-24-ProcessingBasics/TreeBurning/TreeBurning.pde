@@ -18,6 +18,7 @@ void setup() {
   size(600, 500);
   ROWS = 50;
   COLS = 60;
+  SQUARESIZE = 10;
   /**question 1 *********************************
    *At this point you have initialized width, height,ROWS,COLS. You can change these values
    *to alter the screen size, but you cannot just change one value!
@@ -35,7 +36,7 @@ void setup() {
    *ANSWER : replace squareSize = 8; with the correct square size.
    * DO NOT just write a number, it must work when you change the size() command or the ROWS and COLS
    */
-  SQUARESIZE = 8;//COPY YOUR CHANGED LINE TO THE TOP IN ANSWER SLOT 2.
+  //COPY YOUR CHANGED LINE TO THE TOP IN ANSWER SLOT 2.
 
 
 }
@@ -93,7 +94,7 @@ void mouseClicked() {
 void drawSquares(BurnTrees treeSim) {
   for(int r=0;r<ROWS;r++){
     for(int c=0;c<COLS;c++){
-      square(r,c,SQUARESIZE);
+      square(c*SQUARESIZE,r*SQUARESIZE,SQUARESIZE);
       int state = treeSim.map[r][c];
       if(state == 1){
         fill(255,0,0);
