@@ -91,6 +91,24 @@ void mouseClicked() {
  *ANSWER: Complete this method. (DO NOT COPY THIS TO THE TOP!)
  */
 void drawSquares(BurnTrees treeSim) {
+  for(int r=0;r<ROWS;r++){
+    for(int c=0;c<COLS;c++){
+      square(r,c,SQUARESIZE);
+      int state = treeSim.map[r][c];
+      if(state == 1){
+        fill(255,0,0);
+      }
+      if(state == 2){
+        fill(0,255,0);
+      }
+      if(state == 3){
+        fill(100,100,100);
+      }
+      if(state == 0){
+        fill(0,0,0);
+      }
+    }}
+  
   /**Complete this method.
    *1. Break up your screen by drawing ROWSxCOLS squares of the same color.
    *   URGENT: Use meaningful variable names for your loops here, not just i,j !
