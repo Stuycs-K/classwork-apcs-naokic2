@@ -8,7 +8,7 @@ public class BurnTrees{
   private static final int ASH = 3;
   private static final int SPACE = 0;
   private boolean done = false;
-  private ArrayDeque<int[]> fire = new ArrayDeque<int[]>();
+  private Frontier fire = new Frontier(false);
 
 
   /*Determine if the simulation is still burning
@@ -19,7 +19,7 @@ public class BurnTrees{
     //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
     //HINT: do not check the board for fire which is an n^2 operation
 
-    return done;//placeholder for compilation purposes
+    return fire.size() == 0;//placeholder for compilation purposes
   }
 
   /*This is the core of the simulation. All of the logic for advancing to the next round goes here.
@@ -27,40 +27,29 @@ public class BurnTrees{
    *new fires should remain fire, and not spread.
    */
 
-   public void check(int i, int x, int[][] copy){
-     if(i<(copy.length-1) && copy[i+1][x] == 2){
+      public void checkF(int i, int x){
+     if(i<(map.length-1) && map[i+1][x] == 2){
+       fire.add(new int[]{i+1,x});
        map[i+1][x] = 1;
      }
-     if(i > 0 && copy[i-1][x] == 2){
+     if(i > 0 && map[i-1][x] == 2){
+       fire.add(new int[]{i-1,x});
        map[i-1][x] = 1;
      }
-     if(x>0 && copy[i][x-1] == 2){
+     if(x>0 && map[i][x-1] == 2){
+       fire.add(new int[]{i,x-1});
        map[i][x-1] = 1;
      }
-     if(x<(copy[0].length-1) && copy[i][x+1] == 2){
-       map[i][x+1] = 1;
-
-     }
-   }
-   public void checkF(int i, int x){
-     if(i<(map.length-1) && map[i+1][x] == 2){
-       fire.addFirst(new int[]{i+1,x});
-     }
-     if(i > 0 && map[i-1][x] == 2){
-       fire.addFirst(new int[]{i-1,x});
-     }
-     if(x>0 && map[i][x-1] == 2){
-       fire.addFirst(new int[]{i,x-1});
-     }
      if(x<(map[0].length-1) && map[i][x+1] == 2){
-       fire.addFirst(new int[]{i,x+1});
+       fire.add(new int[]{i,x+1});
+       map[i][x+1] = 1;
      }
    }
 
    public void tick(){
-       int[] temp = fire.removeLast();
+       int[] temp = fire.remove();
        checkF(temp[0],temp[1]);
-       map[temp[0]][temp[1]] = 3;
+       map[temp[0]][temp[1]] = ASH;
        if(fire.size() == 0){
          done = true;
        }
@@ -69,38 +58,6 @@ public class BurnTrees{
      //YOU MUST IMPLEMENT THE REST OF THIS METHOD
      //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
    }
-
-
-
-
-
-
-
-
-
-
-  public void tickOld(){
-    int[][] copy = new int[map.length][map[0].length];
-    for(int i=0;i<map.length;i++){
-      for(int x=0;x<map[0].length;x++){
-        copy[i][x] = map[i][x];
-      }
-    }
-    done = true;
-    for(int i=0;i<copy.length;i++){
-      for(int x=0;x<copy[0].length;x++){
-        if(copy[i][x] == 1){
-          check(i,x,copy);
-          map[i][x] = 3;
-          done = false;
-        }
-      }
-    }
-
-    ticks++;//leave this here.
-    //YOU MUST IMPLEMENT THE REST OF THIS METHOD
-    //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
-  }
 
   /***********************YOU MIGHT UPDATE THIS**************************/
 
@@ -117,6 +74,7 @@ public class BurnTrees{
       for(int c=0; c<map[r].length; c++ ){
         if(Math.random() < density){
            map[r][c]=TREE;
+           
          }
        }
      }
@@ -134,6 +92,7 @@ public class BurnTrees{
       if(map[i][0]==TREE){
         map[i][0]=FIRE;
         fire.add(new int[]{i,0});
+        System.out.println(Arrays.toString(fire.peek()) + "hi");
       }
     }
   }
@@ -152,6 +111,7 @@ public class BurnTrees{
   public int run(){
     while(!done()){
       tick();
+      System.out.println("hello");
     }
     return getTicks();
   }
