@@ -21,6 +21,9 @@
       //make sure it is the correct color
       //make sure you read the parameters of ellipse/circle, so that you have the correct size.
       //radius is NOT one of the parameters by default.
+      circle(x,y,radius*2);
+      fill(c);
+      
     }
 
     void move(){
@@ -39,7 +42,7 @@
       if(x <= 0 || x>= width){
         dx = -dx;
       }
-      if(y <= 0 || y>= width){
+      if(y <= 0 || y>= height){
         dy = -dy;
       }
 

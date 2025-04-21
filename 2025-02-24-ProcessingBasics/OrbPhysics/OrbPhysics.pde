@@ -10,8 +10,8 @@ ArrayList<Orb>orbList;
         //The x and y positions are the same as the mouse
         //the radius should be a random value in the range [40.0,80.0)
         //the xVelocity and yVelocity should be random values in the range [-3.0,3.0)
-        double x = mouseX;
-        double y = mouseY;
+        float x = mouseX;
+        float y = mouseY;
         float r = random(40.0,80.0);
         float dx = random(-3.0,3.0);
         float dy = random(-3.0,3.0);
