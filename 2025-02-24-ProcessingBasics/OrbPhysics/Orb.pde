@@ -39,10 +39,10 @@
       //Change the direction of movement by negataing one of the velocity directions.
       //check x and y separately in case you hit a corner and hit both simultaneously, do not connect with an else!
       
-      if(x <= 0 || x>= width){
+      if(x <= 0+radius || x>= width-radius){
         dx = -dx;
       }
-      if(y <= 0 || y>= height){
+      if(y <= 0+radius || y>= height-radius){
         dy = -dy;
       }
 
