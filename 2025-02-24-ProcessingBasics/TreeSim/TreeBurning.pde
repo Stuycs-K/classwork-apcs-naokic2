@@ -49,7 +49,7 @@ void setup() {
 void draw() {
   
   //frameCount tells you how many times the draw method was called.
-  if (!treeSim.done() && frameCount % 10 == 0) {
+  if (!treeSim.done() && frameCount % 1 == 0) {
     treeSim.tick();
     //println("Frame number: "+ frameCount);
   }
