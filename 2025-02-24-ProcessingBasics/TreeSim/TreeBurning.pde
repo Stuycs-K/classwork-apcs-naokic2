@@ -1,8 +1,11 @@
 /*1.
 The size of the x val and y val of the screensize must be divisible by the row# and col#, respectively.
 *2.
+width/x, height/y
 *3.
+adding delay
 *4.
+
 */
 
 /**IMPORTANT:
@@ -29,7 +32,7 @@ void setup() {
 
   DENSITY = 0.65;
   //width is cols, or x.
-  treeSim = new TreeSim(ROWS, COLS, DENSITY,false);
+  treeSim = new TreeSim(ROWS, COLS);
 
   /**question 2 *********************************
    *Given that you can change the size() and the number of ROWS and COLS,
@@ -46,7 +49,7 @@ void setup() {
 void draw() {
   
   //frameCount tells you how many times the draw method was called.
-  if (!treeSim.done()) {
+  if (!treeSim.done() && frameCount % 10 == 0) {
     treeSim.tick();
     //println("Frame number: "+ frameCount);
   }
@@ -85,7 +88,7 @@ void mouseClicked() {
    *Please use the same values that it was initialized with in the setup.
    * ANSWER: UPDATE THE NEXT LINE THEN COPY IT TO THE TOP IN ANSWER SLOT 4.
    */
-  treeSim = new TreeSim(ROWS, COLS, DENSITY,!treeSim.isStack());
+  treeSim = new TreeSim(ROWS, COLS);
 }
 
 

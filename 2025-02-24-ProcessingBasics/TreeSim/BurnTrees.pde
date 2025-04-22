@@ -106,7 +106,7 @@ public class TreeSim{
         
     if(canCarve(nR, nC)){
       map[nR][nC] = TREE;
-      System.out.println("Hello");
+
       carveMaze(nR,nC);
     }
     for(int i=index;i< remain - 1;i++){
@@ -117,9 +117,16 @@ public class TreeSim{
     }
 }
 
-  public TreeSim(int width,int height, double density,boolean stac){
-    fire = new frontier(stac);
-    stack = stac;
+  public TreeSim(int width,int height){
+    Random ran = new Random();
+    int num = ran.nextInt(2);
+    if(num == 1){
+      fire = new frontier(true);
+    }else{
+      fire = new frontier(false);
+    }
+      
+    
     map = new int[height][width];
     for(int r=0;r<height;r++){
       for(int c=0;c<width;c++){
@@ -142,7 +149,6 @@ public class TreeSim{
       if(map[i][0]==TREE){
         map[i][0]=FIRE;
         fire.add(new int[]{i,0});
-        System.out.println(Arrays.toString(fire.peek()) + "hi");
       }
     }
   }
