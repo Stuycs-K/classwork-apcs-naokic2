@@ -8,7 +8,8 @@ public class BurnTrees{
   private static final int ASH = 3;
   private static final int SPACE = 0;
   private boolean done = false;
-  private Frontier fire = new Frontier(false);
+  private Frontier fire; 
+  private boolean stack;
 
 
   /*Determine if the simulation is still burning
@@ -68,7 +69,9 @@ public class BurnTrees{
 
 
 
-  public BurnTrees(int width,int height, double density){
+  public BurnTrees(int width,int height, double density,boolean stac){
+    fire = new Frontier(stac);
+    stack = stac;
     map = new int[height][width];
     for(int r=0; r<map.length; r++ ){
       for(int c=0; c<map[r].length; c++ ){
@@ -78,6 +81,7 @@ public class BurnTrees{
          }
        }
      }
+     
      start();//set the left column on fire.
   }
 
@@ -97,6 +101,9 @@ public class BurnTrees{
     }
   }
 
+  public boolean isStack(){
+    return stack;
+  }
 
 
 
@@ -111,7 +118,6 @@ public class BurnTrees{
   public int run(){
     while(!done()){
       tick();
-      System.out.println("hello");
     }
     return getTicks();
   }

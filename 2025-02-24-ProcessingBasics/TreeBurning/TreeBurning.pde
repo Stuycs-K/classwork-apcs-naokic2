@@ -16,12 +16,10 @@ double DENSITY;
 int SQUARESIZE;
 
 void setup() {
-  int x-size = 600;
-  int y-size = 400;
-  size(x-size, y-size);
+  size(600, 600);
   ROWS = 60;
   COLS = 60;
-  SQUARESIZE = ;
+  SQUARESIZE = 10;
   /**question 1 *********************************
    *At this point you have initialized width, height,ROWS,COLS. You can change these values
    *to alter the screen size, but you cannot just change one value!
@@ -29,9 +27,9 @@ void setup() {
    *ANSWER ON THE TOP IN ANSWER SLOT 1.
    */
 
-  DENSITY = 1;
+  DENSITY = 0.65;
   //width is cols, or x.
-  treeSim = new BurnTrees(ROWS, COLS, DENSITY);
+  treeSim = new BurnTrees(ROWS, COLS, DENSITY,false);
 
   /**question 2 *********************************
    *Given that you can change the size() and the number of ROWS and COLS,
@@ -46,9 +44,9 @@ void setup() {
 
 /*DO NOT UPDATE THIS METHOD*/
 void draw() {
-  background(0);
+  
   //frameCount tells you how many times the draw method was called.
-  if (frameCount % 1 == 0 && !treeSim.done()) {
+  if (!treeSim.done()) {
     treeSim.tick();
     //println("Frame number: "+ frameCount);
   }
@@ -64,8 +62,10 @@ void draw() {
 
 
   //Convert the 2D array into a grid of RED/GREEN/WHITE/GREY Squares.
+  if(treeSim.getTicks() % 20 == 0){
+    background(0);
   drawSquares(treeSim);
-
+  }
   //Output the resulting time and dimensions of the simulation
   if (treeSim.done()) {
      fill(0);
@@ -85,7 +85,7 @@ void mouseClicked() {
    *Please use the same values that it was initialized with in the setup.
    * ANSWER: UPDATE THE NEXT LINE THEN COPY IT TO THE TOP IN ANSWER SLOT 4.
    */
-  treeSim = null;
+  treeSim = new BurnTrees(ROWS, COLS, DENSITY,!treeSim.isStack());
 }
 
 
@@ -97,7 +97,7 @@ void mouseClicked() {
 void drawSquares(BurnTrees treeSim) {
   for(int r=0;r<ROWS;r++){
     for(int c=0;c<COLS;c++){
-      square(c*SQUARESIZE,r*SQUARESIZE,SQUARESIZE);
+
       int state = treeSim.map[r][c];
       if(state == 1){
         fill(255,0,0);
@@ -111,10 +111,11 @@ void drawSquares(BurnTrees treeSim) {
       if(state == 0){
         fill(0,0,0);
       }
+      square(c*SQUARESIZE,r*SQUARESIZE,SQUARESIZE);
     }}
   
   /**Complete this method.
-   *1. Break up your screen by drawing ROWSxCOLS squares of the same color.
+     *1. Break up your screen by drawing ROWSxCOLS squares of the same color.
    *   URGENT: Use meaningful variable names for your loops here, not just i,j !
    *2. Decide how to fill them in using the treeSim object.
    *   Colors: Fire = RED, Tree = GREEN, SPACE = BLACK, ASH = GREY
