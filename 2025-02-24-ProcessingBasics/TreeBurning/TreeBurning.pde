@@ -1,9 +1,11 @@
 /*1.
 The size of the x val and y val of the screensize must be divisible by the row# and col#, respectively.
 *2.
+width/x, height/y
 *3.
+adding delay
 *4.
-*/
+  treeSim = new BurnTrees(ROWS, COLS, DENSITY,!treeSim.isStack());
 
 /**IMPORTANT:
  *Please read through the logic of this sketch before you try to modify anything.
@@ -46,7 +48,7 @@ void setup() {
 void draw() {
   
   //frameCount tells you how many times the draw method was called.
-  if (!treeSim.done()) {
+  if (!treeSim.done()&& frameCount % 10 == 0) {
     treeSim.tick();
     //println("Frame number: "+ frameCount);
   }
@@ -62,10 +64,10 @@ void draw() {
 
 
   //Convert the 2D array into a grid of RED/GREEN/WHITE/GREY Squares.
-  if(treeSim.getTicks() % 20 == 0){
+
     background(0);
   drawSquares(treeSim);
-  }
+  
   //Output the resulting time and dimensions of the simulation
   if (treeSim.done()) {
      fill(0);
