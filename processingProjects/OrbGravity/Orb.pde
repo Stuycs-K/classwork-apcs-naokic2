@@ -17,7 +17,9 @@ public class Orb {
     //1. apply acceleration to velocity
     //2. apply velocity to position
     //3. reset acceleration to 0 so that forces do not accumulate
-
+    velocity.add(acceleration);
+    position.add(velocity);
+    acceleration.set(0,0);
 
     //DO NOT EDIT:
     //bounce on earth mode
@@ -38,7 +40,7 @@ public class Orb {
 
     //CHANGE THIS
     //calculate the distance from this orb to other orb
-    float distance = 1.0;
+    float distance = PVector.dist(this.position, other.position);
 
     //DO NOT CHANGE THIS:
     //this code prevents small distances creating problems (overlapping orbs with 0 dist)
@@ -46,17 +48,17 @@ public class Orb {
 
     //CHANGE THIS
     //calculate the magnitude of the force g using the formula g = G*M1*M2/dist^2
-    double mag = 1.0;
+    double mag = OrbGravity.G * other.mass * this.mass;
 
     //CHANGE THIS
     //calculate the direction of the force
     //hint: (concept) https://mathsathome.com/vector-between-2-points/
     //hint2: use the built in functions of pvectors.
-    PVector force = null;
+    PVector force = ;
 
     //CHANGE THIS
     //normalize the force
-
+  force.normalize();
     //CHANGE THIS
     //now you have a unit vector, and a magnitude.
     //Make your force vector have the correct magnitude before returning it.
