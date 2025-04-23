@@ -27,7 +27,27 @@ public class Orb {
       bounce();
   }
 
+//This method will be used to make the current Orb apply a spring force to the other Orb.
+void springAttract(Orb other) {
+  //1. check the distance between the orbs.
+  float dist = 0;
+  
+  //2. calculate the magnitude of the force using f = SPRING_CONSTANT*displacement
+  //where displacement is the difference between the distance beetween the orbs, and the SPRING_LENGTH.
+  //Note: The force will change direction depending if the distance is smaller/larger than the SPRING_LENGTH.
+  
+  float mag = 0;
 
+  //3. Now calculate the direction of the force,
+  PVector direction;
+
+
+
+  //4. Scale the vector to the magnitude
+
+  //apply the force to other.acceleration
+
+}
   /**
    *Calculate the force between this orb and the other orb.
    *Return a PVector with the correct magnitude and direction
@@ -54,15 +74,18 @@ public class Orb {
     //calculate the direction of the force
     //hint: (concept) https://mathsathome.com/vector-between-2-points/
     //hint2: use the built in functions of pvectors.
-    PVector force = ;
+    PVector copythis = position.copy();
+    PVector copyother = other.position.copy();
+    
+    PVector force = copyother.sub(copythis);
 
     //CHANGE THIS
     //normalize the force
-  force.normalize();
+    force = force.div(force.mag());
     //CHANGE THIS
     //now you have a unit vector, and a magnitude.
     //Make your force vector have the correct magnitude before returning it.
-
+    
 
     //DO NOT CHANGE THIS
     return force;
@@ -72,6 +95,8 @@ public class Orb {
   void applyForce(PVector f) {
     //knowing that f = ma, you can rearrange the formula to see how you want to manipulate acceleration:
     //a = f / m
+    
+    acceleration.add(f.div(mass));
 
     //CHANGE THIS
     //add  force/mass to the acceleration to apply the force.

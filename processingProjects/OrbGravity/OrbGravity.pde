@@ -14,8 +14,8 @@ void setup() {
   //CHANGE THIS
   //make an orb at the center of the screen with a mass of 100.
   //note: Orb Constructor parameters: x,y,xSpeed,ySpeed,radius,mass
-  center = new Orb(width/2,height/2,0,0,1,100);
-
+  center = new Orb(width/2,height/2,0,0,40,3);
+  
   //CHANGE THIS
   //make earth (mass of 500million) place it very far off the bottom of the screen
   earth = new Orb(600, 1000000, 0,0,1,500000000);
