@@ -23,24 +23,38 @@ public class Orb {
 
     //DO NOT EDIT:
     //bounce on earth mode
-    if (MODE == EARTH)
+    if (BOUNCE)
       bounce();
+     
+
   }
 
 //This method will be used to make the current Orb apply a spring force to the other Orb.
 void springAttract(Orb other) {
   //1. check the distance between the orbs.
-  float dist = 0;
+  float dist = PVector.sub(position,other.position).mag();
   
   //2. calculate the magnitude of the force using f = SPRING_CONSTANT*displacement
   //where displacement is the difference between the distance beetween the orbs, and the SPRING_LENGTH.
   //Note: The force will change direction depending if the distance is smaller/larger than the SPRING_LENGTH.
   
-  float mag = 0;
+   float mag = SPRING_CONSTANT * (dist - SPRING_LENGTH);
 
   //3. Now calculate the direction of the force,
-  PVector direction;
 
+    PVector copythis = position.copy();
+    PVector copyother = other.position.copy();
+    
+    PVector force = copyother.sub(copythis);
+
+    //CHANGE THIS
+    //normalize the force
+    force.normalize();
+    force.mult(mag);
+    applyForce(force);
+    stroke(c);
+    line(other.position.x,other.position.y,position.x,position.y);
+    
 
 
   //4. Scale the vector to the magnitude
