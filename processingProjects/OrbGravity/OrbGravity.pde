@@ -4,11 +4,14 @@ Orb earth, center;
 static double G = 20;
 static int ORBIT = 0;
 static int EARTH = 1;
+static int OFF = 2;
 static int MODE = EARTH;
-static float SPRING_CONSTANT = 1;
-static float SPRING_LENGTH = 200;
+static float SPRING_CONSTANT = 0.1;
+static float SPRING_LENGTH = 100;
 static boolean SPRING = false;
 static boolean BOUNCE = false;
+static boolean CLEAR_BACKGROUND = true;
+static boolean change = false;
 /**
  *IN THIS TAB: MODIFY YOUR SETUP BEFORE YOU EDIT ORB
  */
@@ -30,13 +33,14 @@ void setup() {
 }
 void mouseClicked() {
   orbList.add(new Orb(mouseX, mouseY, 1, 0, 20, 10));
-  
+  change = true;
 }
 
 void keyPressed() {
+ 
   if(key == ' '){
   MODE++;
-  MODE%=2;
+  MODE%=3;
   }
   if(key == 'b'){
     BOUNCE = !BOUNCE;
@@ -44,9 +48,16 @@ void keyPressed() {
   if(key == 's'){
     SPRING = !SPRING;
   }
+  if(key == 'c'){
+    CLEAR_BACKGROUND = !CLEAR_BACKGROUND;
+  }
 }
 void draw() {
+  if(CLEAR_BACKGROUND){
   background(255);
+  }
+
+
   for (Orb o : orbList) {
     o.move();
     o.display();
@@ -63,10 +74,31 @@ void draw() {
   if (MODE==ORBIT || SPRING)
     center.display();
   fill(0);
+  
+  
+
   if (MODE==ORBIT)
+  
     text("Orbit Mode", 20, 20);
   if (MODE==EARTH)
     text("Earth Mode", 20, 20);
+  if (MODE==OFF)
+    text("OFF", 20, 20);
+  if(SPRING){
+    text("SPRING = ON", 20,40);
+  } else{
+    text("SPRING = OFF", 20,40);
+  }
+  if(BOUNCE){
+    text("BOUNCE = ON", 20,60);
+  }else{
+    text("BOUNCE = OFF", 20,60);
+  }
+  if(CLEAR_BACKGROUND){
+    text("CLEAR BACKGROUND = ON",20,80);
+  }else{
+   text("CLEAR BACKGROUND = OFF",20,80); 
+  }
+  text(orbList.size(), 100, 20);
 
-  text(orbList.size(), 20, 40);
 }
