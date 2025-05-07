@@ -23,31 +23,37 @@ public class Kernel {
         if(poss(x + i, y + n)){
           int scal = kernel[n+1][i+1];
           color place = img.get(x, y);
-          r += place
+          r += red(place) * scal;
+          g += green(place) * scal;
+          b += blue(place)*scal;
       }
+    }
     }
     
     
-    
-    
     return new color(r,g,b);
-    
+  }
     //Hint: start by always returning black.
     //This will let you test your apply method right away!
 
   }
 Boolean poss( int x,int y){
   if(x > -1 && x < kernel[0].length)
-  {return true;}
+  {return true;
+}
   if(y > -1 && y < kernel.length){
-    return true;}
+    return true;
+  }
    return false;
 }
 
   /**You must write this method that applies the kernel to the source,
   *and saves the data to the destination.*/
   void apply(PImage source, PImage destination) {
-    
+    for(int x =0;x < source.width;x ++){
+      for(int y =0;y < source.width;y ++){
+        destination.set(calcNewColor(source,x,y));
+  }
   }
 
 }
