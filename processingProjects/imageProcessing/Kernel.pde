@@ -29,9 +29,6 @@ public class Kernel {
           r = constrain(r, 0, 255);
           g = constrain(g, 0, 255);
           b = constrain(b, 0, 255);
-            
-          
-          
       }
     }
     }
