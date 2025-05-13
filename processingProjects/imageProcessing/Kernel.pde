@@ -14,14 +14,14 @@ public class Kernel {
   *     0-255, then clamp it to that range (< 0 becomes 0, >255 becomes 255)
   */
   color calcNewColor(PImage img, int x, int y) {
-    int r =0;
-    int g = 0;
-    int b=0;
+    float r =0;
+    float g = 0;
+    float b=0;
     
     for(int i = -1; i< 2;i++){
       for(int n = -1; n< 2;n++){
         if(poss(x + i, y + n)){
-          int scal = kernel[n+1][i+1];
+          float scal = kernel[n+1][i+1];
           color place = img.get(x, y);
           r += red(place) * scal;
           g += green(place) * scal;
@@ -31,12 +31,12 @@ public class Kernel {
     }
     
     
-    return new color(r,g,b);
+    return color(r,g,b);
   }
     //Hint: start by always returning black.
     //This will let you test your apply method right away!
 
-  }
+  
 Boolean poss( int x,int y){
   if(x > -1 && x < kernel[0].length)
   {return true;
@@ -52,8 +52,9 @@ Boolean poss( int x,int y){
   void apply(PImage source, PImage destination) {
     for(int x =0;x < source.width;x ++){
       for(int y =0;y < source.width;y ++){
-        destination.set(calcNewColor(source,x,y));
+        destination.set(x,y,calcNewColor(source,x,y));
   }
   }
 
+}
 }
