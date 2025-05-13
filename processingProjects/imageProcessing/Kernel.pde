@@ -20,12 +20,18 @@ public class Kernel {
     
     for(int i = -1; i< 2;i++){
       for(int n = -1; n< 2;n++){
-        if(poss(x + i, y + n)){
+        if(poss(img, x + i, y + n)){
           float scal = kernel[n+1][i+1];
-          color place = img.get(x, y);
+          color place = img.get(x+i, y+n);
           r += red(place) * scal;
           g += green(place) * scal;
           b += blue(place)*scal;
+          r = constrain(r, 0, 255);
+          g = constrain(g, 0, 255);
+          b = constrain(b, 0, 255);
+            
+          
+          
       }
     }
     }
@@ -37,24 +43,17 @@ public class Kernel {
     //This will let you test your apply method right away!
 
   
-Boolean poss( int x,int y){
-  if(x > -1 && x < kernel[0].length)
-  {return true;
-}
-  if(y > -1 && y < kernel.length){
-    return true;
-  }
-   return false;
+Boolean poss(PImage img, int x,int y){
+   return (x>= 0 && x < img.width && y >= 0 && y< img.height);
 }
 
   /**You must write this method that applies the kernel to the source,
   *and saves the data to the destination.*/
   void apply(PImage source, PImage destination) {
     for(int x =0;x < source.width;x ++){
-      for(int y =0;y < source.width;y ++){
+      for(int y =0;y < source.height;y ++){
         destination.set(x,y,calcNewColor(source,x,y));
   }
   }
-
 }
 }
